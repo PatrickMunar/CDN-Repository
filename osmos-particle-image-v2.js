@@ -98,8 +98,6 @@ const main = () => {
         waveAmplitude: 0.001,
     }
 
-    const particleTexture = textureLoader.load("./images/Circle.png")
-
     const imageToParticle = (imagesDataIndex) => {
         particlePairedIndex[dataTextureCount] = imagesDataIndex
 
@@ -293,7 +291,6 @@ const main = () => {
         uniforms: {
             uTime: { value: 0 },
             uTexture: { value: texture },
-            uParticleTexture: { value: particleTexture },
             uPositions: { value: dataTextures[dataTextureCount] },
             uParticleSize: { value: particleParameters.particleSize },
             uPicturePosition: { value: new THREE.Vector2(0, 0) },
@@ -333,7 +330,6 @@ const main = () => {
         `,
         fragmentShader: `
             uniform sampler2D uTexture;
-            uniform sampler2D uParticleTexture;
             uniform float uParticleOpacity;
 
             varying vec2 vUv;
@@ -342,7 +338,7 @@ const main = () => {
                 vec4 particleTexture = texture2D(uParticleTexture, gl_PointCoord);
                 vec4 texture = texture2D(uTexture, vUv);
 
-                gl_FragColor = vec4(texture.rgb, particleTexture.a);
+                gl_FragColor = vec4(texture.rgb, 1.);
             }
         `,
         depthTest: false,
