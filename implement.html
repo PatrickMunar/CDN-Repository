@@ -1,0 +1,24 @@
+<style>
+    .webgl {
+        top: 0;
+      left: 0;
+      position: fixed;
+      z-index: 99;
+      outline: none;
+      box-sizing: border-box;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+    }
+    
+    .particle-image {
+        opacity: 0;
+    }
+  </style>
+  
+  <!-- Three.js Canvas -->
+  <canvas class="webgl"></canvas>
+  
+  <script src="https://unpkg.com/three@0.147.0"></script>
+  
+  <script type="module" src="https://cdn.jsdelivr.net/gh/PatrickMunar/CDN-Repository/osmos-particle-image-v5.js"></script>
