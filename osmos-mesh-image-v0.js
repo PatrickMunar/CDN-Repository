@@ -176,8 +176,8 @@ const main = () => {
             })
             webglImages[i] = new THREE.Mesh(meshGeometry, meshMaterial)
             webglImages[i].scale.set(
-                imagesData[i].frameSize.w,
-                imagesData[i].frameSize.h,
+                imagesData[i].size.w,
+                imagesData[i].size.h,
                 1
             )
             webglImages[i].position.set(
