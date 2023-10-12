@@ -1,6 +1,8 @@
 // Canvas class: webgl
 // Image class: particle-image
 
+console.log('o')
+
 // Math Functions
 const lerp = (a, b, n) => {
 return (1 - n) * a + n * b
