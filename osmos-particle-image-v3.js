@@ -287,6 +287,7 @@ const main = () => {
 
         // Texture
         const texture = textureLoader.load(imagesData[imagesDataIndex].src)
+        console.log(imagesData[imagesDataIndex].src)
 
         // Particle Material
         particleMaterial[dataTextureCount] = new THREE.ShaderMaterial({
@@ -337,7 +338,6 @@ const main = () => {
             varying vec2 vUv;
 
             void main() {
-                vec4 particleTexture = texture2D(uParticleTexture, gl_PointCoord);
                 vec4 texture = texture2D(uTexture, vUv);
 
                 gl_FragColor = vec4(texture.rgb, 1.);
