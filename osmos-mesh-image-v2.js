@@ -172,7 +172,7 @@ const main = () => {
             `,
               transparent: true,
               // side: THREE.DoubleSide,
-              wireframe: true,
+              wireframe: false,
             })
             webglImages[i] = new THREE.Mesh(meshGeometry, meshMaterial)
             webglImages[i].scale.set(
@@ -191,30 +191,6 @@ const main = () => {
     }
 
     convertImages()
-
-    // WebGL Image Resize and Repositioning
-    const webglImageReposition = () => {
-        // WebGL Images
-        for (let i = 0; i < webglImages.length; i++) {
-            // Image Positions from Top and Left
-            imagesData[i].position.x =
-                -visibleSizes.width / 2 +
-                (images[i].getBoundingClientRect().left *
-                visibleSizes.width) /
-                sizes.width +
-                imagesData[i].size.w / 2
-            imagesData[i].position.y = -(
-                -visibleSizes.height / 2 +
-                (images[i].getBoundingClientRect().top *
-                visibleSizes.height) /
-                sizes.height +
-                imagesData[i].size.h / 2
-            )
-
-            webglImages[i].position.x = imagesData[i].position.x
-            webglImages[i].position.y = imagesData[i].position.y
-        }
-    }
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({
@@ -241,10 +217,25 @@ const main = () => {
         // Update Times
         for (let i = 0; i < webglImages.length; i++) {
             webglImages[i].material.uniforms.uTime.value = elapsedTime
-        }
 
-        // WebGL Image Reposition
-        webglImageReposition()
+            // WebGL Image Resize and Repositioning
+            imagesData[i].position.x =
+                -visibleSizes.width / 2 +
+                (images[i].getBoundingClientRect().left *
+                visibleSizes.width) /
+                sizes.width +
+                imagesData[i].size.w / 2
+            imagesData[i].position.y = -(
+                -visibleSizes.height / 2 +
+                (images[i].getBoundingClientRect().top *
+                visibleSizes.height) /
+                sizes.height +
+                imagesData[i].size.h / 2
+            )
+
+            webglImages[i].position.x = imagesData[i].position.x
+            webglImages[i].position.y = imagesData[i].position.y
+        }
 
         // Render
         renderer.render(scene, camera)
