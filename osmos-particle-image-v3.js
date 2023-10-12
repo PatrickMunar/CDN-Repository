@@ -1,7 +1,7 @@
 // Canvas class: webgl
 // Image class: particle-image
 
-console.log('o')
+console.log('x')
 
 // Math Functions
 const lerp = (a, b, n) => {
@@ -87,12 +87,12 @@ const main = () => {
     const particlePairedIndex = []
 
     // Particle Parameters
-    const particleSize = { value: 256 }
+    const particleSize = { value: 512 }
 
     const particleParameters = {
         size: particleSize.value,
         number: particleSize.value * particleSize.value,
-        particleSize: 5,
+        particleSize: 2.5,
         randomParticleSize: 0,
         distortionRadius: 2.5,
         inverseForcePush: 500,
