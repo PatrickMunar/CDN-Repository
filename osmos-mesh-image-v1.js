@@ -151,7 +151,7 @@ const main = () => {
                 void main() {
                     vec3 newPosition = position;
             
-                    newPosition.z +=  sin(uTime * 2. + uv.y * 2.);
+                    newPosition.z +=  sin(uTime * 2. + uv.y * 8.) * 0.025;
             
                     vec4 mvPosition = modelViewMatrix * vec4( newPosition, 1.);
             
