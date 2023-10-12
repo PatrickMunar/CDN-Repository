@@ -65,8 +65,6 @@ const main = () => {
                 imagesData[i].size.h,
                 1
             )
-
-            rects[i] = images[i].getBoundingClientRect()
         }
 
         // Update camera
@@ -211,11 +209,6 @@ const main = () => {
      */
     // ----------------------------------------------------------------
 
-    const rects = []
-    for (let i = 0; i < webglImages.length; i++) {
-        rects[i] = images[i].getBoundingClientRect()
-    }
-
     let elapsedTime
     const clock = new THREE.Clock()
 
@@ -229,13 +222,13 @@ const main = () => {
             // WebGL Image Resize and Repositioning
             imagesData[i].position.x =
                 -visibleSizes.width / 2 +
-                (rects[i].left *
+                (images[i].getBoundingClientRect().left *
                 visibleSizes.width) /
                 sizes.width +
                 imagesData[i].size.w / 2
             imagesData[i].position.y = -(
                 -visibleSizes.height / 2 +
-                (rects[i].top *
+                (images[i].getBoundingClientRect().top *
                 visibleSizes.height) /
                 sizes.height +
                 imagesData[i].size.h / 2
